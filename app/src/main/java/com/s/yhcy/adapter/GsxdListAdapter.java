@@ -1,6 +1,7 @@
 package com.s.yhcy.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -44,6 +45,7 @@ public class GsxdListAdapter extends BaseAdapter {
         layout.setOrientation(LinearLayout.VERTICAL);
         TextView titleView = new TextView(context);
         titleView.setText(list.get(position).getNeiRong().getTitle());
+        titleView.setTextColor(Color.CYAN);
         TextView contentView = new TextView(context);
         contentView.setText(list.get(position).getNeiRong().getContent());
         layout.addView(titleView);
