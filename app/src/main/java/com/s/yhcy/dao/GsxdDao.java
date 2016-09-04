@@ -1,5 +1,7 @@
 package com.s.yhcy.dao;
 
+import android.text.TextUtils;
+
 import com.s.yhcy.entity.Gsxd;
 import com.s.yhcy.entity.Item;
 
@@ -18,9 +20,23 @@ public class GsxdDao {
             gsxd.setZhang(new Item("第一章", "公司信贷"));
             gsxd.setJie(new Item("1.1", "公司信贷基础"));
             gsxd.setXiaoJie(new Item("1.1.1", "公司信贷相关概念"));
-            gsxd.setNeiRong(new Item(i + " : 信贷", "信贷指一切以实现承诺为条件的价值运动形式，包括存款、贷款、担保、承兑、赊欠等活动。"));
+            gsxd.setNeiRong(new Item(i + " : 信贷", i + " : 信贷指一切以实现承诺为条件的价值运动形式，包括存款、贷款、担保、承兑、赊欠等活动。"));
             list.add(gsxd);
         }
         return list;
+    }
+
+    public static List<Gsxd> query(String s) {
+        List<Gsxd> list = queryAll();
+        if (TextUtils.isEmpty(s)) {
+            return list;
+        }
+        List<Gsxd> newList = new ArrayList<>();
+        for (Gsxd gsxd : list) {
+            if (gsxd.getNeiRong().getContent().contains(s)) {
+                newList.add(gsxd);
+            }
+        }
+        return newList;
     }
 }

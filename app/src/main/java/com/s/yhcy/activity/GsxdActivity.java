@@ -25,6 +25,8 @@ public class GsxdActivity extends MyAppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                listView.setAdapter(new GsxdListAdapter(GsxdActivity.this,GsxdDao.query(newText)));
+
                 return true;
             }
         });
