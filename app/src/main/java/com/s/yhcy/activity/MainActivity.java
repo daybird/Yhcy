@@ -44,7 +44,12 @@ public class MainActivity extends MyAppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        String result = data.getExtras().getString("result");
+        if (data==null){
+            Toast.makeText(this,"没有接收到数据！",Toast.LENGTH_SHORT).show();
+        }
+        Bundle bundle = data.getExtras();
+        String result = bundle.getParcelable("data");
         Toast.makeText(this,result,Toast.LENGTH_SHORT).show();
+
     }
 }
