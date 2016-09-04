@@ -72,6 +72,7 @@ public class MainActivity extends MyAppCompatActivity {
     }
 
     private File getFileFromURI(Uri uri) {
+        //TODO 需从URI解析文件路径
         File file = new File(uri.getPath());
         return file;
     }
