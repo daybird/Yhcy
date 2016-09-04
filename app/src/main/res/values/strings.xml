@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">银行从业考试工具</string>
     <string name="gsxd">公司信贷</string>
+    <string name="excelInput">导入Excel文件</string>
 </resources>
