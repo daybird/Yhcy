@@ -1,13 +1,20 @@
 package com.s.yhcy.activity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.s.yhcy.R;
+import com.s.yhcy.entity.Gsxd;
+import com.s.yhcy.util.ExcelUtil;
+
+import java.io.File;
+import java.util.List;
 
 public class MainActivity extends MyAppCompatActivity {
 
@@ -54,12 +61,18 @@ public class MainActivity extends MyAppCompatActivity {
             case FILE_SELECT_CODE:
                 if (resultCode == RESULT_OK) {
                     Uri uri = data.getData();
-                    Toast.makeText(this, uri.getPath(), Toast.LENGTH_SHORT).show();
+                    File file = getFileFromURI(uri);
+                    List<Gsxd> gsxdList = ExcelUtil.getGsxdListFromExcel(file);
+                    Toast.makeText(this, gsxdList.size(), Toast.LENGTH_SHORT).show();
                 } else if (resultCode == RESULT_CANCELED) {
                     Toast.makeText(this, R.string.cancelChoice, Toast.LENGTH_SHORT).show();
                 }
         }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
-
+    private File getFileFromURI(Uri uri) {
+        File file = new File(uri.getPath());
+        return file;
     }
 }
