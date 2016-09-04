@@ -2,4 +2,6 @@
     <string name="app_name">银行从业考试工具</string>
     <string name="gsxd">公司信贷</string>
     <string name="excelInput">导入Excel文件</string>
+    <string name="cancelChoice">取消选择</string>
+    <string name="noData">没有数据</string>
 </resources>
