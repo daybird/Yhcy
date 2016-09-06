@@ -1,18 +1,12 @@
 package com.s.yhcy.activity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.s.yhcy.R;
-import com.s.yhcy.entity.Gsxd;
-import com.s.yhcy.util.ExcelUtil;
 
-import java.io.File;
-import java.util.List;
 
 public class MainActivity extends MyAppCompatActivity {
 
@@ -39,13 +33,16 @@ public class MainActivity extends MyAppCompatActivity {
         });
     }
 
+    /**
+     * 显示文件选择界面
+     */
     private void showFileChooseActivity() {
         Intent intent = new Intent();
         intent.setClass(this, FileChooseActivity.class);
         this.startActivity(intent);
     }
     /**
-     * 显示公司信贷页面
+     * 显示公司信贷界面
      */
     private void showGsxdActivity() {
         Intent intent = new Intent();
@@ -53,28 +50,4 @@ public class MainActivity extends MyAppCompatActivity {
         this.startActivity(intent);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (data == null) {
-            Toast.makeText(this, R.string.noData, Toast.LENGTH_SHORT).show();
-        }
-        switch (requestCode) {
-            case FILE_SELECT_CODE:
-                if (resultCode == RESULT_OK) {
-                    Uri uri = data.getData();
-                    File file = getFileFromURI(uri);
-                    List<Gsxd> gsxdList = ExcelUtil.getGsxdListFromExcel(file);
-                    Toast.makeText(this, gsxdList.size(), Toast.LENGTH_SHORT).show();
-                } else if (resultCode == RESULT_CANCELED) {
-                    Toast.makeText(this, R.string.cancelChoice, Toast.LENGTH_SHORT).show();
-                }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    private File getFileFromURI(Uri uri) {
-        //TODO 需从URI解析文件路径
-        File file = new File(uri.getPath());
-        return file;
-    }
 }

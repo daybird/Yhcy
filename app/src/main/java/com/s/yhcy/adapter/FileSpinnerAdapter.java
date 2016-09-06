@@ -4,20 +4,13 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
-import com.s.yhcy.activity.FileChooseActivity;
 
 import java.io.File;
-import java.util.LinkedHashSet;
 import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
 
-/**
- * Created by PawN on 2016/9/7.
- */
+//
 public class FileSpinnerAdapter extends BaseAdapter {
 
     private LinkedList<File> fileQueue;

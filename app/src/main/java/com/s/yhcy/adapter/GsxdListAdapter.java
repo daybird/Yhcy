@@ -12,9 +12,7 @@ import com.s.yhcy.entity.Gsxd;
 
 import java.util.List;
 
-/**
- * Created by PawN on 2016/9/4.
- */
+//TODO 未完成自动更新视图功能
 public class GsxdListAdapter extends BaseAdapter {
     private Context context;
     private List<Gsxd> list;

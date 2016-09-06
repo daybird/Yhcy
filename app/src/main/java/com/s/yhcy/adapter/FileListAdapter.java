@@ -15,9 +15,6 @@ import java.util.List;
 
 import static android.graphics.Color.*;
 
-/**
- * Created by PawN on 2016/9/7.
- */
 public class FileListAdapter extends BaseAdapter {
     private Context context;
     private File path;
@@ -58,6 +55,7 @@ public class FileListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        //FIXME 部分文件夹点击后界面crash。
         TextView fileView = new TextView(context);
         File file = fileList.get(position);
         fileView.setText(fileList.get(position).getName());

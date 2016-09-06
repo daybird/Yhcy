@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.s.yhcy.R;
 import com.s.yhcy.adapter.FileListAdapter;
@@ -36,9 +35,10 @@ public class FileChooseActivity extends AppCompatActivity {
                     fileListAdapter.setPath(file);
                 } else {
                     List<Gsxd> gsxdList = ExcelUtil.getGsxdListFromExcel(file);
-                    Toast.makeText(FileChooseActivity.this, gsxdList.size(), Toast.LENGTH_LONG).show();
+                    // TODO 导入数据库
                 }
             }
         });
     }
+
 }
