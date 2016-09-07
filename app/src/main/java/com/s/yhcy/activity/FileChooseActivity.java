@@ -6,11 +6,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.s.yhcy.R;
 import com.s.yhcy.adapter.FileListAdapter;
 import com.s.yhcy.adapter.FileSpinnerAdapter;
 import com.s.yhcy.entity.Gsxd;
+import com.s.yhcy.sql.GsxdDBHelper;
 import com.s.yhcy.util.ExcelUtil;
 
 import java.io.File;
@@ -51,7 +53,13 @@ public class FileChooseActivity extends AppCompatActivity {
                     spinnerAdapter.addItem(file);
                 } else {
                     List<Gsxd> gsxdList = ExcelUtil.getGsxdListFromExcel(file);
-                    // TODO 导入数据库
+                    GsxdDBHelper dbHelper = new GsxdDBHelper(FileChooseActivity.this, GsxdDBHelper.DBFILE, null, 1);
+                    long result = dbHelper.insertGsxdList(gsxdList);
+                    if (result == gsxdList.size()) {
+                        Toast.makeText(FileChooseActivity.this, "导入成功!", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(FileChooseActivity.this, "导入成功：" + result + "条；失败：" + (gsxdList.size() - result) + "条。", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
