@@ -17,6 +17,7 @@ public class GsxdDBHelper extends SQLiteOpenHelper {
 
     public GsxdDBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
+        this.context = context;
     }
 
     @Override
@@ -32,13 +33,18 @@ public class GsxdDBHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean insertGsxd(Gsxd gsxd) {
+    public long insertGsxd(Gsxd gsxd) {
         //TODO 插入数据
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("zhang_t",gsxd.getZhang().getTitle());
-        values.put("zhang_c",gsxd.getZhang().getContent());
-        db.insert("GSXD","ID",values);
-        return true;
+        values.put("zhang_t", gsxd.getZhang().getTitle());
+        values.put("zhang_c", gsxd.getZhang().getContent());
+        values.put("jie_t", gsxd.getJie().getTitle());
+        values.put("jie_c", gsxd.getJie().getContent());
+        values.put("xiaoJie_t", gsxd.getXiaoJie().getTitle());
+        values.put("xiaoJie_c", gsxd.getXiaoJie().getContent());
+        values.put("neiRong_t", gsxd.getNeiRong().getTitle());
+        values.put("neiRong_c", gsxd.getNeiRong().getContent());
+        return db.insert("GSXD", "id", values);
     }
 }
