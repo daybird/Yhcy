@@ -1,6 +1,5 @@
 package com.s.yhcy.activity;
 
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 /**

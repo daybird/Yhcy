@@ -1,12 +1,9 @@
 package com.s.yhcy.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.File;

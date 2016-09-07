@@ -52,7 +52,6 @@ public class GsxdDBHelper extends SQLiteOpenHelper {
 
 
     public long insertGsxd(Gsxd gsxd) {
-        //TODO 插入数据
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = buildContentValues(gsxd);
         long result = db.insert(TABLE, NULLCOLUMNHACK, values);

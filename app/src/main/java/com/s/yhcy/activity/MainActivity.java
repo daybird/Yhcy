@@ -12,8 +12,6 @@ import com.s.yhcy.sql.GsxdDBHelper;
 
 public class MainActivity extends MyAppCompatActivity {
 
-    private static final int FILE_SELECT_CODE = 1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
