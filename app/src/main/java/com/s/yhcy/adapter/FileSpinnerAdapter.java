@@ -23,6 +23,14 @@ public class FileSpinnerAdapter extends BaseAdapter {
         fileQueue.add(new File("/"));
     }
 
+
+    public void addItem(File file) {
+        fileQueue.add(file);
+        if (fileQueue.size() > 10)
+            fileQueue.poll();
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
         return fileQueue.size();

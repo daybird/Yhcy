@@ -24,15 +24,27 @@ public class FileChooseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_file_choose);
         ListView listView = (ListView) this.findViewById(R.id.filelistView);
         Spinner spinner = (Spinner) this.findViewById(R.id.folderspinner);
-        spinner.setAdapter(new FileSpinnerAdapter(this));
+        final FileSpinnerAdapter spinnerAdapter = new FileSpinnerAdapter(this);
         final FileListAdapter fileListAdapter = new FileListAdapter(this);
+        spinner.setAdapter(spinnerAdapter);
         listView.setAdapter(fileListAdapter);
+        //TODO 程序crash!
+        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                File file = (File) parent.getItemAtPosition(position);
+                fileListAdapter.setPath(file);
+            }
+        });
+
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 File file = (File) parent.getItemAtPosition(position);
                 if (file.isDirectory()) {
                     fileListAdapter.setPath(file);
+                    spinnerAdapter.addItem(file);
                 } else {
                     List<Gsxd> gsxdList = ExcelUtil.getGsxdListFromExcel(file);
                     // TODO 导入数据库
