@@ -28,12 +28,16 @@ public class FileChooseActivity extends AppCompatActivity {
         final FileListAdapter fileListAdapter = new FileListAdapter(this);
         spinner.setAdapter(spinnerAdapter);
         listView.setAdapter(fileListAdapter);
-        //TODO 程序crash!
-        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 File file = (File) parent.getItemAtPosition(position);
                 fileListAdapter.setPath(file);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
