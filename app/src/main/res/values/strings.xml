@@ -4,5 +4,6 @@
     <string name="excelInput">导入Excel文件</string>
     <string name="cancelChoice">取消选择</string>
     <string name="noData">没有数据</string>
-    <string name="UPDATE_TABLE_GSXD">DROP TABLE IF EXISTS `GSXD`</string>
+    <string name="UPDATE_TABLE_GSXD">DROP TABLE IF EXISTS GSXD</string>
+    <string name="clearData">清除数据</string>
 </resources>

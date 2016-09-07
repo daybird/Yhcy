@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.s.yhcy.R;
+import com.s.yhcy.sql.GsxdDBHelper;
 
 
 public class MainActivity extends MyAppCompatActivity {
@@ -18,6 +20,7 @@ public class MainActivity extends MyAppCompatActivity {
         setContentView(R.layout.activity_main);
         final Button gsxdBt = (Button) this.findViewById(R.id.gsxdBt);
         Button excelInputBt = (Button) this.findViewById(R.id.excelInputBt);
+        Button clearBt = (Button) this.findViewById(R.id.clearBt);
         gsxdBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,6 +34,13 @@ public class MainActivity extends MyAppCompatActivity {
 
             }
         });
+        clearBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int result = new GsxdDBHelper(MainActivity.this, GsxdDBHelper.DBFILE, null, 1).deleteAll();
+                Toast.makeText(MainActivity.this, "清除了" + result + "条数据", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     /**
@@ -41,6 +51,7 @@ public class MainActivity extends MyAppCompatActivity {
         intent.setClass(this, FileChooseActivity.class);
         this.startActivity(intent);
     }
+
     /**
      * 显示公司信贷界面
      */
