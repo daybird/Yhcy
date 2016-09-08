@@ -3,6 +3,7 @@
     package="com.s.yhcy">
     <!--FIXME SDK版本在23以上申请权限-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <application
         android:allowBackup="true"

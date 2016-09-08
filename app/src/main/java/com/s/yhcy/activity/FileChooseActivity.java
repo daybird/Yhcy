@@ -1,5 +1,6 @@
 package com.s.yhcy.activity;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,20 +15,27 @@ import com.s.yhcy.adapter.FileSpinnerAdapter;
 import com.s.yhcy.entity.Gsxd;
 import com.s.yhcy.sql.GsxdDBHelper;
 import com.s.yhcy.util.ExcelUtil;
+import com.s.yhcy.util.PermissionsUtil;
 
 import java.io.File;
 import java.util.List;
 
 public class FileChooseActivity extends AppCompatActivity {
 
+    private static final String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        PermissionsUtil.checkAndRequestPermissions(this, permissions);
         setContentView(R.layout.activity_file_choose);
         ListView listView = (ListView) this.findViewById(R.id.filelistView);
         Spinner spinner = (Spinner) this.findViewById(R.id.folderspinner);
         final FileSpinnerAdapter spinnerAdapter = new FileSpinnerAdapter(this);
-        final FileListAdapter fileListAdapter = new FileListAdapter(this);
+        final FileListAdapter fileListAdapter = new FileListAdapter(this, new File("/"));
         spinner.setAdapter(spinnerAdapter);
         listView.setAdapter(fileListAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
