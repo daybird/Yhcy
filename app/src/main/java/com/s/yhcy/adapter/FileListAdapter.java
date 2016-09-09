@@ -1,6 +1,7 @@
 package com.s.yhcy.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -49,16 +50,16 @@ public class FileListAdapter extends BaseAdapter implements FileFilter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        //FIXME 部分文件夹点击后界面crash。
         TextView fileView = new TextView(context);
         File file = fileList.get(position);
         fileView.setText(fileList.get(position).getName());
         ViewGroup.MarginLayoutParams params = new ViewGroup.MarginLayoutParams(ViewGroup.MarginLayoutParams.MATCH_PARENT, ViewGroup.MarginLayoutParams.WRAP_CONTENT);
         params.setMargins(5, 10, 5, 10);
         fileView.setLayoutParams(params);
-        fileView.setTextSize(30);
+        fileView.setTextSize(20);
         if (file.isDirectory())
             fileView.setTextColor(BLUE);
+        else fileView.setTextColor(Color.BLACK);
         return fileView;
     }
 

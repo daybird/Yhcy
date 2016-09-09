@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/folderspinner"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:minHeight="30dp"/>
 
     <ListView
         android:layout_width="match_parent"
@@ -22,5 +23,7 @@
         android:id="@+id/filelistView"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:divider="@color/colorPrimaryDark"
+        android:dividerHeight="1dp"
         android:layout_below="@+id/folderspinner" />
 </RelativeLayout>

@@ -33,10 +33,11 @@ public class FileChooseActivity extends AppCompatActivity {
         PermissionsUtil.checkAndRequestPermissions(this, permissions);
         setContentView(R.layout.activity_file_choose);
         ListView listView = (ListView) this.findViewById(R.id.filelistView);
-        Spinner spinner = (Spinner) this.findViewById(R.id.folderspinner);
+        final Spinner spinner = (Spinner) this.findViewById(R.id.folderspinner);
         final FileSpinnerAdapter spinnerAdapter = new FileSpinnerAdapter(this);
         final FileListAdapter fileListAdapter = new FileListAdapter(this, new File("/"));
         spinner.setAdapter(spinnerAdapter);
+        spinner.setSelection(0);
         listView.setAdapter(fileListAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -51,14 +52,20 @@ public class FileChooseActivity extends AppCompatActivity {
             }
         });
 
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 File file = (File) parent.getItemAtPosition(position);
                 if (file.isDirectory()) {
-                    fileListAdapter.setPath(file);
+                    for (int i = 0; i < spinnerAdapter.getCount(); i++) {
+                        if (spinnerAdapter.getItem(i).equals(file)) {
+                            spinner.setSelection(i);
+                            return;
+                        }
+                    }
                     spinnerAdapter.addItem(file);
+                    spinnerAdapter.notifyDataSetChanged();
+                    spinner.setSelection(spinnerAdapter.getCount() - 1);
                 } else {
                     List<Gsxd> gsxdList = ExcelUtil.getGsxdListFromExcel(file);
                     GsxdDBHelper dbHelper = new GsxdDBHelper(FileChooseActivity.this, GsxdDBHelper.DBFILE, null, 1);

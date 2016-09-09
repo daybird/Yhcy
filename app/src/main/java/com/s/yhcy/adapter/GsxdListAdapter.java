@@ -12,7 +12,6 @@ import com.s.yhcy.entity.Gsxd;
 
 import java.util.List;
 
-//TODO 未完成自动更新视图功能
 public class GsxdListAdapter extends BaseAdapter {
     private Context context;
     private List<Gsxd> list;
