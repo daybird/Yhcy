@@ -10,12 +10,12 @@ import com.s.yhcy.R;
 import com.s.yhcy.sql.GsxdDBHelper;
 
 
-public class MainActivity extends MyAppCompatActivity {
+public class MenuActivity extends MyAppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_menu);
         final Button gsxdBt = (Button) this.findViewById(R.id.gsxdBt);
         Button excelInputBt = (Button) this.findViewById(R.id.excelInputBt);
         Button clearBt = (Button) this.findViewById(R.id.clearBt);
@@ -35,8 +35,8 @@ public class MainActivity extends MyAppCompatActivity {
         clearBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int result = new GsxdDBHelper(MainActivity.this, GsxdDBHelper.DBFILE, null, 1).deleteAll();
-                Toast.makeText(MainActivity.this, "清除了" + result + "条数据", Toast.LENGTH_SHORT).show();
+                int result = new GsxdDBHelper(MenuActivity.this, GsxdDBHelper.DBFILE, null, 1).deleteAll();
+                Toast.makeText(MenuActivity.this, "清除了" + result + "条数据", Toast.LENGTH_SHORT).show();
             }
         });
     }

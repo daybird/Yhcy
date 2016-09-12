@@ -39,7 +39,9 @@ public class GsxdActivity extends MyAppCompatActivity {
                     if (gsxd.getNeiRong().getContent().contains(newText))
                         newList.add(gsxd);
                 }
-                listView.setAdapter(new GsxdListAdapter(GsxdActivity.this, newList));
+                GsxdListAdapter newAdapter = new GsxdListAdapter(GsxdActivity.this, newList);
+                newAdapter.setSearchText(newText);
+                listView.setAdapter(newAdapter);
                 return true;
             }
         });
