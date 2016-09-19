@@ -73,7 +73,7 @@ public class FileChooseActivity extends AppCompatActivity {
                     if (result == gsxdList.size()) {
                         Toast.makeText(FileChooseActivity.this, "导入成功!", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(FileChooseActivity.this, "导入成功：" + result + "条；失败：" + (gsxdList.size() - result) + "条。", Toast.LENGTH_LONG).show();
+                        Toast.makeText(FileChooseActivity.this, "导入成功：" + result + "条； 失败：" + (gsxdList.size() - result) + "条。", Toast.LENGTH_LONG).show();
                     }
                 }
             }
